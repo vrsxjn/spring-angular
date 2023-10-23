@@ -1,0 +1,31 @@
+
+
+
+<mat-card class="custom-card">
+  <mat-card-header style="display: flex; justify-content: space-between; align-items: center;">
+    <mat-card-title>{{ post.user.username }}</mat-card-title>
+    <button mat-icon-button [matMenuTriggerFor]="optiosPic" *ngIf="post.user_id === currentUser.id">
+      <mat-icon>⋯</mat-icon>
+    </button>
+   <mat-menu #optiosPic="matMenu">
+    <button mat-menu-item (click)="deletPic(post.id)">Excluir</button>
+    </mat-menu>
+  </mat-card-header>
+  <img mat-card-image [src]="post.urlImage" >
+  <mat-card-content style="display: flex; justify-content: space-between; align-items: flex-start;" *ngFor="let comment of post.comments">
+    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+      <mat-card-title>{{ comment.username }}</mat-card-title>
+      <mat-card-subtitle>{{ comment.comment }}</mat-card-subtitle>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="optionsMenu" *ngIf="comment.userId === currentUser.id">
+      <mat-icon>⋯</mat-icon>
+    </button>
+    <mat-menu #optionsMenu="matMenu">
+      <button mat-menu-item (click)="editDialog(comment.id)">Editar</button>
+      <button mat-menu-item (click)="deletDialog(comment.id)">Excluir</button>
+    </mat-menu>
+  </mat-card-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="openDialog(post.id)">Comment</button>
+  </mat-dialog-actions>
+</mat-card>

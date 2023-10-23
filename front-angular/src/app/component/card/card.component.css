@@ -1,0 +1,8 @@
+.custom-card {
+  width: 300px;
+  display: flex;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: .5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}

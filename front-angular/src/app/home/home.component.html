@@ -1,0 +1,16 @@
+
+<body>
+
+<section class="content">
+  <div style="text-align: right;" class="example-button-container">
+  <button mat-fab color="black" (click)="openPicDialog()">
+    <mat-icon>+</mat-icon>
+  </button>
+</div>
+
+<ol class="cards" id="cardsList">
+  <app-card *ngFor="let post of posts" [post]="post"></app-card>
+
+</ol>
+</section>
+</body>
